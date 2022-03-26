@@ -1,4 +1,9 @@
 <div *ngIf="osmAnalysis">
-  {{ osmAnalysis.publicTransportAccessability.isBusAccessible }}
+  bus: {{ osmAnalysis.publicTransportAccessability.isBusAccessible }}
+  train: {{ osmAnalysis.publicTransportAccessability.isTrainAccessible }}
+  tram: {{ osmAnalysis.publicTransportAccessability.isTramAccessible }}
+  subway: {{ osmAnalysis.publicTransportAccessability.isSubwayAccessible }}
+  monorail: {{ osmAnalysis.publicTransportAccessability.isMonorailAccessible }}
+  light rail: {{ osmAnalysis.publicTransportAccessability.isLightRailAccessible }}
 </div>
 
