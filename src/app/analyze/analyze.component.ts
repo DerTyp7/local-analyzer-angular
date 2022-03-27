@@ -5,6 +5,7 @@ import { OsmAnalysis } from '../interfaces/osmAnalysis';
 import { OsmService } from '../services/osm.service';
 import { OSM } from '../interfaces/osm';
 import { OsmAnalysisService } from '../services/osm-analysis.service';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-analyze',
@@ -14,6 +15,8 @@ import { OsmAnalysisService } from '../services/osm-analysis.service';
 export class AnalyzeComponent implements OnInit {
   lon!: string | null;
   lat!: string | null;
+
+  status: string = "";
 
   osmAnalysis?: OsmAnalysis;
 
@@ -33,12 +36,23 @@ export class AnalyzeComponent implements OnInit {
     let minLat: number = parseFloat(this.lat!) - 0.13;
     let maxLat: number = parseFloat(this.lat!) + 0.13;
 
+    this.status = "Downloading OSM data...";
 
-    this.overpassApiService.sendQueryRequest(`${minLon},${minLat},${maxLon},${maxLat}`).subscribe(data => {
-      console.log(data);
-      let osm: OSM = this.osmService.parseOsmContent(data);
-      // Analyze the OSM data
-      this.osmAnalysis = this.osmAnalysisService.getOsmAnalysis(osm);
+    this.overpassApiService.sendQueryRequest(`${minLon},${minLat},${maxLon},${maxLat}`)
+    .pipe(catchError(err => {
+      console.error(err);
+      this.status = "<label style='color:rgb(209, 39, 39); font-weight:bold;'>Dowloading OSM data failed!</label>\
+      <br>You may have been set on pause by the server, because of too many requests in a short amount of time.";
+      return of("");
+    }))
+    .subscribe((data: string) => {
+      if(data != ""){
+        let osm: OSM = this.osmService.parseOsmContent(data);
+        // Analyze the OSM data
+        this.status = "Analyze OSM data...";
+        this.osmAnalysis = this.osmAnalysisService.getOsmAnalysis(osm);
+        this.status = "";
+      }
     });
   }
 

@@ -1,9 +1,32 @@
-<div *ngIf="osmAnalysis">
-  bus: {{ osmAnalysis.publicTransportAccessability.isBusAccessible }}
-  train: {{ osmAnalysis.publicTransportAccessability.isTrainAccessible }}
-  tram: {{ osmAnalysis.publicTransportAccessability.isTramAccessible }}
-  subway: {{ osmAnalysis.publicTransportAccessability.isSubwayAccessible }}
-  monorail: {{ osmAnalysis.publicTransportAccessability.isMonorailAccessible }}
-  light rail: {{ osmAnalysis.publicTransportAccessability.isLightRailAccessible }}
+
+<h5 [innerHTML]="status"></h5>
+
+<div *ngIf="osmAnalysis" class="result-container center">
+  <div class="result-container-pta ">
+
+    <div class="pta-circle pta-circle-{{osmAnalysis.publicTransportAccessability.isBusAccessible}}">
+      <p class="pta-circle-text">Bus</p>
+    </div>
+
+    <div class="pta-circle pta-circle-{{osmAnalysis.publicTransportAccessability.isTramAccessible}}">
+      <p class="pta-circle-text">Tram</p>
+    </div>
+
+    <div class="pta-circle pta-circle-{{osmAnalysis.publicTransportAccessability.isSubwayAccessible}}">
+      <p class="pta-circle-text">Subway</p>
+    </div>
+
+    <div class="pta-circle pta-circle-{{osmAnalysis.publicTransportAccessability.isTrainAccessible}}">
+      <p class="pta-circle-text">Train</p>
+    </div>
+
+    <div class="pta-circle pta-circle-{{osmAnalysis.publicTransportAccessability.isLightRailAccessible}}">
+      <p class="pta-circle-text">Light rail</p>
+    </div>
+
+    <div class="pta-circle pta-circle-{{osmAnalysis.publicTransportAccessability.isMonorailAccessible}}">
+      <p class="pta-circle-text">Monotrail</p>
+    </div>
+  </div>
 </div>
 
