@@ -1,18 +1,38 @@
 <div class="search-bar center">
-  <input class="center" type="text" name="searchValue" #searchInput (change)="inputChange(searchInput.value)" placeholder="Search your address" />
+  <input
+    class="center"
+    type="text"
+    name="searchValue"
+    #searchInput
+    (change)="inputChange(searchInput.value)"
+    placeholder="Search address (Enter to search)"
+    tabindex="1"
+    [ngClass]="{ active: searchInput.value }"
+  />
 
-
-  <div *ngIf="searchResults && searchResults.length > 0" class="search-results center">
-    <br>
+  <div
+    *ngIf="searchResults && searchResults.length > 0"
+    class="search-results center"
+  >
+    <br />
     <div *ngFor="let result of searchResults">
-      <div class="search-result"
-       (click)="analyze(result.geometry!.coordinates[0], result.geometry!.coordinates[1])"
-        *ngIf="result.geometry!.coordinates && result.geometry?.coordinates!.length >= 2">
-
-        <span >
-          <b>{{result.properties.name}}</b> {{result.properties.postcode}} {{result.properties.city}} {{result.properties.country}}
+      <div
+        class="search-result"
+        (click)="
+          analyze(
+            result.geometry!.coordinates[0],
+            result.geometry!.coordinates[1]
+          )
+        "
+        *ngIf="
+          result.geometry!.coordinates &&
+          (result.geometry?.coordinates)!.length >= 2
+        "
+      >
+        <span>
+          <b>{{ result.properties.name }}</b> {{ result.properties.postcode }}
+          {{ result.properties.city }} {{ result.properties.country }}
         </span>
-
       </div>
     </div>
   </div>
