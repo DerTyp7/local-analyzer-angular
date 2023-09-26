@@ -1,19 +1,18 @@
-h5{
+h5 {
   padding-top: 30px;
   text-align: center;
 }
 
-.result-container{
+.result-container {
   padding-top: 30px;
   width: 700px;
 
-
-  .result-container-pta{
+  .result-container-pta {
     height: 100px;
     border-bottom: 1px solid rgb(63, 63, 63);
   }
 
-  .pta-circle{
+  .pta-circle {
     width: 65px;
     height: 65px;
     border-radius: 50%;
@@ -28,7 +27,7 @@ h5{
     background-repeat: no-repeat;
     background-position: center;
 
-    .pta-circle-text{
+    .pta-circle-text {
       margin-top: 85px;
       font-size: 10pt;
       font-weight: bold;
@@ -36,14 +35,13 @@ h5{
     }
   }
 
-  .pta-circle-true{
+  .pta-circle-true {
     border-color: rgb(76, 231, 140);
-    background-image: url('/assets/images/tick.svg');
+    background-image: url("../../assets/images/tick.svg");
   }
 
-  .pta-circle-false{
+  .pta-circle-false {
     border-color: rgb(209, 39, 39);
-    background-image: url('/assets/images/cross.svg');
+    background-image: url("../../assets/images/cross.svg");
   }
-
 }

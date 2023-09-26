@@ -32,14 +32,6 @@
           },
           "configurations": {
             "production": {
-              "assets": [
-                "src/favicon.ico",
-                {
-                  "glob": "**/*",
-                  "input": "src/assets",
-                  "output": "/local-analyzer-angular/assets"
-                }
-              ],
               "budgets": [
                 {
                   "type": "initial",
