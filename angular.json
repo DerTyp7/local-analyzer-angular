@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/local-analyzer-angular/",
             "outputPath": "dist/local-analyzer",
             "index": "src/index.html",
             "main": "src/main.ts",

@@ -37,11 +37,11 @@ h5 {
 
   .pta-circle-true {
     border-color: rgb(76, 231, 140);
-    background-image: url("../../assets/images/tick.svg");
+    background-image: url("/local-analyzer-angular/assets/images/tick.svg");
   }
 
   .pta-circle-false {
     border-color: rgb(209, 39, 39);
-    background-image: url("../../assets/images/cross.svg");
+    background-image: url("/local-analyzer-angular/assets/images/cross.svg");
   }
 }
